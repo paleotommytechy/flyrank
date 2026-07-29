@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlyRank - Multi-Criteria Flight Search & Ranking</title>
+  <meta name="description" content="Search, compare, and rank flights based on price, travel duration, carbon footprint, layovers, and airline rating." />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="/src/css/main.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand" id="brand-link">
+        <div class="brand-icon">✈</div>
+        <span class="brand-title">FlyRank</span>
+      </a>
+
+      <div class="nav-actions">
+        <div id="filter-pills" class="preset-pills">
+          <button type="button" class="pill-btn active" data-filter="all">All Flights</button>
+          <button type="button" class="pill-btn" data-filter="eco">Eco-Friendly 🌱</button>
+          <button type="button" class="pill-btn" data-filter="direct">Direct Only ⚡</button>
+          <button type="button" class="pill-btn" data-filter="bookmarked">Saved ❤️</button>
+        </div>
+        <div id="theme-toggle-slot"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Hero & Search Section -->
+  <main class="container">
+    <section class="hero">
+      <h1 class="hero-title">Rank Flights Your Way</h1>
+      <p class="hero-subtitle">
+        Go beyond simple price sorting. Score and compare flights dynamically based on price, speed, sustainability, and comfort preferences.
+      </p>
+    </section>
+
+    <!-- Search Form Slot -->
+    <div id="search-form-slot"></div>
+
+    <!-- Multi-Criteria Slider Controls Slot -->
+    <div id="rank-sliders-slot"></div>
+
+    <!-- Results Section -->
+    <section id="results-section">
+      <div class="results-header">
+        <div id="results-count-text" class="results-count">Showing ranked results...</div>
+        <div style="font-size:0.85rem; color:var(--text-muted);">
+          Sorted by composite <strong>FlyScore</strong> (0 - 100)
+        </div>
+      </div>
+
+      <div id="flight-list-container" class="flight-list">
+        <!-- Rendered Flight Cards -->
+      </div>
+    </section>
+
+    <!-- Comparison Drawer Slot -->
+    <div id="comparison-drawer-slot"></div>
+  </main>
+
+  <script type="module" src="/src/js/app.js"></script>
+</body>
+</html>
