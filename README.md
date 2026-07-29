@@ -2,6 +2,10 @@
 
 FlyRank is a flight search and ranking application designed to help users find, compare, and rank flights based on customizable criteria such as price, travel duration, carbon footprint, layovers, and airline rating.
 
+## Capstone Project Overview
+
+This project was built as a **Capstone Project** selecting the **Client-Style Responsive Site** track option (out of the three available options: Personal Site, Shopline/Shopify Build, and Client-Style Responsive Site). It delivers a production-grade, highly responsive, and accessible web interface tailored for real-world client utility and user customization.
+
 ## Core Purpose
 
 The core purpose of FlyRank is to simplify travel planning by going beyond simple price-based sorting. It provides a multi-criteria decision ranking system to help users choose flights that align with their personal preferences, whether they prioritize budget, time, comfort, or environmental impact.

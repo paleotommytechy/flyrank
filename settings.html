@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FlyRank User Settings - Customize flight ranking weights, display units, themes, and search defaults for intelligent travel decision making.">
+  <title>User Settings & Preferences - FlyRank</title>
+  <link rel="stylesheet" href="/src/css/main.css">
+</head>
+<body id="settings-page">
+
+  <!-- Application Header -->
+  <header class="app-header">
+    <a href="/index.html" class="brand-logo" id="nav-brand-logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.7 5.2c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"></path>
+      </svg>
+      <span>FlyRank</span>
+    </a>
+
+    <nav aria-label="Main Navigation">
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link" id="nav-link-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          Search Flights
+        </a></li>
+        <li><a href="/settings.html" class="nav-link active" id="nav-link-settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          User Settings
+        </a></li>
+      </ul>
+    </nav>
+
+    <button type="button" class="theme-toggle-btn" id="header-theme-toggle" title="Toggle Light / Dark Mode" aria-label="Toggle theme">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    </button>
+  </header>
+
+  <!-- Main Container -->
+  <main class="app-container">
+    
+    <!-- Page Title & Header -->
+    <header class="page-header">
+      <div>
+        <h1 class="page-title">User Settings & Preferences</h1>
+        <p class="page-subtitle">Personalize your multi-criteria ranking model, display formatting, and system preferences.</p>
+      </div>
+
+      <div class="button-group">
+        <button type="button" class="btn btn-secondary" id="btn-export-json">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export Config
+        </button>
+        <button type="button" class="btn btn-secondary" id="btn-import-json">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          Import Config
+        </button>
+        <button type="button" class="btn btn-primary" id="btn-save-all">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+          Save All Changes
+        </button>
+      </div>
+    </header>
+
+    <!-- Settings Layout Grid -->
+    <div class="settings-layout">
+      
+      <!-- Sidebar Navigation -->
+      <aside class="settings-sidebar" aria-label="Settings Categories">
+        <ul class="tab-nav">
+          <li><button type="button" class="tab-btn active" data-tab="weights" id="tab-btn-weights">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+            Ranking Weights
+          </button></li>
+          
+          <li><button type="button" class="tab-btn" data-tab="display" id="tab-btn-display">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            Display & Units
+          </button></li>
+
+          <li><button type="button" class="tab-btn" data-tab="appearance" id="tab-btn-appearance">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+            Appearance & Theme
+          </button></li>
+
+          <li><button type="button" class="tab-btn" data-tab="defaults" id="tab-btn-defaults">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            Search Defaults
+          </button></li>
+
+          <li><button type="button" class="tab-btn" data-tab="notifications" id="tab-btn-notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            Notifications & Alerts
+          </button></li>
+
+          <li><button type="button" class="tab-btn" data-tab="account" id="tab-btn-account">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            Account & Data
+          </button></li>
+        </ul>
+      </aside>
+
+      <!-- Content Panels Container -->
+      <div class="settings-content">
+
+        <!-- Panel 1: Ranking Weights -->
+        <section class="settings-panel active" id="panel-weights">
+          <div class="panel-header">
+            <h2 class="panel-title">Multi-Criteria Ranking Weights</h2>
+            <p class="panel-description">Adjust the priority percentages assigned to each flight criteria. The algorithm continuously recalculates composite scores based on your custom model.</p>
+          </div>
+
+          <div class="form-grid">
+            
+            <!-- Price Weight Slider -->
+            <div class="setting-card">
+              <div class="slider-container">
+                <div class="slider-header">
+                  <label for="weight-price" class="setting-label">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    Price Priority
+                  </label>
+                  <span class="slider-val" id="val-price">40%</span>
+                </div>
+                <input type="range" id="weight-price" class="form-range" min="0" max="100" value="40">
+                <p class="setting-desc">Higher weight favors cheaper tickets over duration or layovers.</p>
+              </div>
+            </div>
+
+            <!-- Duration Weight Slider -->
+            <div class="setting-card">
+              <div class="slider-container">
+                <div class="slider-header">
+                  <label for="weight-duration" class="setting-label">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    Flight Duration Priority
+                  </label>
+                  <span class="slider-val" id="val-duration">25%</span>
+                </div>
+                <input type="range" id="weight-duration" class="form-range" min="0" max="100" value="25">
+                <p class="setting-desc">Higher weight prioritizes total elapsed travel time and direct routes.</p>
+              </div>
+            </div>
+
+            <!-- Emissions Weight Slider -->
+            <div class="setting-card">
+              <div class="slider-container">
+                <div class="slider-header">
+                  <label for="weight-emissions" class="setting-label">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.5 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+                    CO₂ Carbon Footprint
+                  </label>
+                  <span class="slider-val" id="val-emissions">15%</span>
+                </div>
+                <input type="range" id="weight-emissions" class="form-range" min="0" max="100" value="15">
+                <p class="setting-desc">Prioritize flights with lower estimated carbon emissions per passenger.</p>
+              </div>
+            </div>
+
+            <!-- Layover Weight Slider -->
+            <div class="setting-card">
+              <div class="slider-container">
+                <div class="slider-header">
+                  <label for="weight-layovers" class="setting-label">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="18" r="3"></circle><line x1="6" y1="9" x2="6" y2="15"></line></svg>
+                    Layover Avoidance
+                  </label>
+                  <span class="slider-val" id="val-layovers">10%</span>
+                </div>
+                <input type="range" id="weight-layovers" class="form-range" min="0" max="100" value="10">
+                <p class="setting-desc">Penalize connection layovers and multi-stop flight itineraries.</p>
+              </div>
+            </div>
+
+            <!-- Rating Weight Slider -->
+            <div class="setting-card">
+              <div class="slider-container">
+                <div class="slider-header">
+                  <label for="weight-rating" class="setting-label">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Airline Rating & Reputation
+                  </label>
+                  <span class="slider-val" id="val-rating">10%</span>
+                </div>
+                <input type="range" id="weight-rating" class="form-range" min="0" max="100" value="10">
+                <p class="setting-desc">Incorporate carrier service quality ratings into final flight scoring.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Live Score Weight Visualizer -->
+          <div class="scoring-visualizer">
+            <div class="visualizer-title">
+              <span>Weight Distribution Ratio</span>
+              <strong id="total-weight-display">Total weight ratio: 100 points</strong>
+            </div>
+
+            <div class="weight-progress-bar" id="weight-bar-container">
+              <div class="bar-segment bar-price" style="width: 40%;"></div>
+              <div class="bar-segment bar-duration" style="width: 25%;"></div>
+              <div class="bar-segment bar-emissions" style="width: 15%;"></div>
+              <div class="bar-segment bar-layovers" style="width: 10%;"></div>
+              <div class="bar-segment bar-rating" style="width: 10%;"></div>
+            </div>
+
+            <div class="weight-legend">
+              <div class="legend-item"><span class="legend-dot" style="background: var(--primary);"></span>Price: <strong id="pct-price">40%</strong></div>
+              <div class="legend-item"><span class="legend-dot" style="background: var(--accent-cyan);"></span>Duration: <strong id="pct-duration">25%</strong></div>
+              <div class="legend-item"><span class="legend-dot" style="background: var(--accent-emerald);"></span>Emissions: <strong id="pct-emissions">15%</strong></div>
+              <div class="legend-item"><span class="legend-dot" style="background: var(--accent-amber);"></span>Layovers: <strong id="pct-layovers">10%</strong></div>
+              <div class="legend-item"><span class="legend-dot" style="background: var(--accent-purple);"></span>Rating: <strong id="pct-rating">10%</strong></div>
+            </div>
+          </div>
+
+          <!-- Live Flight Ranking Simulation Preview -->
+          <div style="margin-top: 2rem;">
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Real-Time Score Model Preview</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">See how your custom weights immediately impact flight rankings on a sample JFK &rarr; LHR route:</p>
+            
+            <div id="rank-preview-list" style="display: flex; flex-direction: column; gap: 0.75rem;">
+              <!-- Dynamic mock flight cards rendered by settings.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Panel 2: Display & Localization -->
+        <section class="settings-panel" id="panel-display">
+          <div class="panel-header">
+            <h2 class="panel-title">Display & Regional Units</h2>
+            <p class="panel-description">Configure currencies, distance metrics, and time display formats for flight details.</p>
+          </div>
+
+          <div class="form-grid">
+            
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="display-currency" class="setting-label">Primary Currency</label>
+                  <p class="setting-desc">All flight prices will automatically convert to your chosen currency.</p>
+                </div>
+                <select id="display-currency" class="form-select">
+                  <option value="USD">USD ($)</option>
+                  <option value="EUR">EUR (€)</option>
+                  <option value="GBP">GBP (£)</option>
+                  <option value="JPY">JPY (¥)</option>
+                  <option value="CAD">CAD ($)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="display-distance" class="setting-label">Distance Units</label>
+                  <p class="setting-desc">Unit metric used for total flight path distances.</p>
+                </div>
+                <select id="display-distance" class="form-select">
+                  <option value="km">Kilometers (km)</option>
+                  <option value="miles">Miles (mi)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="display-emissions" class="setting-label">CO₂ Emission Unit</label>
+                  <p class="setting-desc">Measurement metric for estimated passenger carbon footprint.</p>
+                </div>
+                <select id="display-emissions" class="form-select">
+                  <option value="kg">Kilograms (kg CO₂)</option>
+                  <option value="lbs">Pounds (lbs CO₂)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="display-timeformat" class="setting-label">Time Format</label>
+                  <p class="setting-desc">Departure and arrival timestamp display standard.</p>
+                </div>
+                <select id="display-timeformat" class="form-select">
+                  <option value="24h">24-hour clock (14:30)</option>
+                  <option value="12h">12-hour clock (2:30 PM)</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Panel 3: Appearance & Theme -->
+        <section class="settings-panel" id="panel-appearance">
+          <div class="panel-header">
+            <h2 class="panel-title">Appearance & UI Customization</h2>
+            <p class="panel-description">Customize visual themes, color accents, layout density, and animation behavior.</p>
+          </div>
+
+          <div class="form-grid">
+            
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="appearance-theme" class="setting-label">Color Theme</label>
+                  <p class="setting-desc">Choose between high-contrast dark mode, clean light mode, or system automatic sync.</p>
+                </div>
+                <select id="appearance-theme" class="form-select">
+                  <option value="dark">Dark Theme (Recommended)</option>
+                  <option value="light">Light Theme</option>
+                  <option value="system">System Preference Sync</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <span class="setting-label">Accent Color Theme</span>
+                  <p class="setting-desc">Select a primary brand accent color for buttons, focus rings, and highlights.</p>
+                </div>
+                <div class="accent-picker">
+                  <button type="button" class="accent-option active" data-color="blue" style="background: #3b82f6;" title="Electric Blue" aria-label="Electric Blue accent"></button>
+                  <button type="button" class="accent-option" data-color="cyan" style="background: #06b6d4;" title="Cyber Cyan" aria-label="Cyber Cyan accent"></button>
+                  <button type="button" class="accent-option" data-color="emerald" style="background: #10b981;" title="Eco Emerald" aria-label="Eco Emerald accent"></button>
+                  <button type="button" class="accent-option" data-color="purple" style="background: #8b5cf6;" title="Vibrant Purple" aria-label="Vibrant Purple accent"></button>
+                  <button type="button" class="accent-option" data-color="rose" style="background: #f43f5e;" title="Sunset Rose" aria-label="Sunset Rose accent"></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="appearance-density" class="setting-label">Layout View Density</label>
+                  <p class="setting-desc">Adjust padding and vertical spacing across search results and tables.</p>
+                </div>
+                <select id="appearance-density" class="form-select">
+                  <option value="comfortable">Comfortable Spacing</option>
+                  <option value="compact">Compact View</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="appearance-motion" class="setting-label">Reduce Motion & Animations</label>
+                  <p class="setting-desc">Disable transitions and micro-animations for improved performance or accessibility.</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="appearance-motion">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Panel 4: Search Defaults -->
+        <section class="settings-panel" id="panel-defaults">
+          <div class="panel-header">
+            <h2 class="panel-title">Default Search Criteria</h2>
+            <p class="panel-description">Pre-fill your search queries with preferred cabin classes, connection limits, and airline preferences.</p>
+          </div>
+
+          <div class="form-grid">
+            
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="default-cabin" class="setting-label">Default Cabin Class</label>
+                  <p class="setting-desc">Initial seat class selected on new flight searches.</p>
+                </div>
+                <select id="default-cabin" class="form-select">
+                  <option value="economy">Economy Class</option>
+                  <option value="premium_economy">Premium Economy</option>
+                  <option value="business">Business Class</option>
+                  <option value="first">First Class</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="default-layovers" class="setting-label">Max Allowed Layovers</label>
+                  <p class="setting-desc">Filter out itineraries exceeding your maximum layover count.</p>
+                </div>
+                <select id="default-layovers" class="form-select">
+                  <option value="any">Any Number of Layovers</option>
+                  <option value="0">Direct / Non-stop Only (0 Layovers)</option>
+                  <option value="1">Maximum 1 Layover</option>
+                  <option value="2">Maximum 2 Layovers</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="default-direct" class="setting-label">Enforce Direct Flights Default</label>
+                  <p class="setting-desc">Always check direct flight filter when initializing search form.</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="default-direct">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="default-refundable" class="setting-label">Refundable Tickets Only</label>
+                  <p class="setting-desc">Only display flights offering flexible cancellation policies.</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="default-refundable">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Panel 5: Notifications & Alerts -->
+        <section class="settings-panel" id="panel-notifications">
+          <div class="panel-header">
+            <h2 class="panel-title">Notifications & Price Alerts</h2>
+            <p class="panel-description">Manage alert notifications, fare drop thresholds, and environmental badges.</p>
+          </div>
+
+          <div class="form-grid">
+            
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="notif-price-alerts" class="setting-label">Fare Price Alerts</label>
+                  <p class="setting-desc">Receive notifications when tracked flight fares drop significantly.</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="notif-price-alerts" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="setting-card">
+              <div class="setting-info" style="max-width: 100%;">
+                <label for="notif-price-threshold" class="setting-label">Min Price Drop Threshold ($ USD)</label>
+                <p class="setting-desc">Only trigger notifications if the price drops by at least this amount.</p>
+                <div style="margin-top: 0.75rem;">
+                  <input type="number" id="notif-price-threshold" class="form-input" min="10" max="500" value="50">
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="notif-eco-badges" class="setting-label">Highlight Low-Emission Badges</label>
+                  <p class="setting-desc">Display green Eco Champion badges on flights with 20%+ lower emissions.</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="notif-eco-badges" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="notif-email-push" class="setting-label">Email & Push Digest</label>
+                  <p class="setting-desc">Send weekly travel deal summaries and rank updates to registered email.</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="notif-email-push">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Panel 6: Account & Data Privacy -->
+        <section class="settings-panel" id="panel-account">
+          <div class="panel-header">
+            <h2 class="panel-title">Account & Data Privacy</h2>
+            <p class="panel-description">Manage local browser state, history settings, and factory reset options.</p>
+          </div>
+
+          <div class="form-grid">
+            
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <span class="setting-label">Saved Profile</span>
+                  <p class="setting-desc">Currently active local session: <strong>Traveler (Local Client)</strong></p>
+                </div>
+                <span style="font-size: 0.85rem; background: var(--primary-light); color: var(--primary); padding: 0.3rem 0.75rem; border-radius: var(--radius-pill); font-weight: 600;">Active Session</span>
+              </div>
+            </div>
+
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="privacy-history" class="setting-label">Save Search History</label>
+                  <p class="setting-desc">Store recent flight queries locally for fast auto-complete search.</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="privacy-history" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="setting-card">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <label for="privacy-analytics" class="setting-label">Anonymous Usage Analytics</label>
+                  <p class="setting-desc">Help improve FlyRank by sharing anonymous app usage statistics.</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="privacy-analytics">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="setting-card" style="border-color: rgba(244, 63, 94, 0.3);">
+              <div class="setting-row">
+                <div class="setting-info">
+                  <span class="setting-label" style="color: var(--accent-rose);">Reset All Settings</span>
+                  <p class="setting-desc">Restore all scoring weights, themes, and search defaults back to factory settings.</p>
+                </div>
+                <button type="button" class="btn btn-danger" id="btn-reset-defaults">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
+                  Reset Defaults
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal Overlay for Import/Export -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Export Settings JSON</h3>
+        <button type="button" class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+        Copy or edit the JSON payload below to back up or restore your custom settings across browsers:
+      </p>
+      <textarea id="export-import-textarea" class="json-textarea" spellcheck="false"></textarea>
+      
+      <div class="button-group" style="margin-top: 1rem;">
+        <button type="button" class="btn btn-secondary" id="modal-copy-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copy JSON
+        </button>
+        <button type="button" class="btn btn-primary" id="modal-apply-import-btn" style="display: none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Apply Import
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script type="module" src="/src/js/app.js"></script>
+</body>
+</html>
