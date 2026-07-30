@@ -21,3 +21,12 @@ This document outlines the development guidelines, command usage, and style conv
   - Use modular, component-based architectures.
   - Keep logic separated from styling/presentation layers.
 - **Git Commit Messages:** Follow the Conventional Commits specification (e.g., `feat: add carbon footprint calculator` or `fix: flight rank sorting logic`).
+
+# Lessons Learned from AI Review
+
+1. **Strictly Inspect Existing Architecture Before Creating Files:** Always place JavaScript modules into established directories (`src/js/components/` for UI elements, `src/js/services/` for business/state logic, `src/css/variables.css` for tokens) rather than dumping files at the root of `src/js/` or creating rogue top-level HTML pages.
+2. **Mandatory Centralized Input Validation:** Every form submission or user-adjustable input (such as search parameters or scoring slider weights) must be validated via a dedicated validation service (`src/js/services/validator.js`) before updating application state or triggering rerenders.
+3. **Enforce Comprehensive Accessibility Defaults:** All interactive buttons (especially icon-only triggers like theme toggles, close buttons, and bookmarks) must include explicit `aria-label` or `title` attributes. Dynamic modals must feature `role="dialog"`, `aria-modal="true"`, and appropriate `aria-labelledby` headings.
+4. **Guaranteed Test Coverage for Core Business Logic:** Any service performing mathematical calculations, score compositions, or data transformations (such as `src/js/services/ranker.js`) must be accompanied by comprehensive Vitest unit tests in `tests/`.
+5. **Enforce End-to-End Verification Before Completion:** Every AI code change must pass all repository verification gates — `npm run lint`, `npm test`, and `npm run build` — with zero errors or missing script definitions in `package.json`.
+
